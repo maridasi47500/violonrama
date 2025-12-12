@@ -1,0 +1,112 @@
+class Piece < ApplicationRecord
+after_create :hellothere
+after_update :hellothere
+def hellothere
+@myscore="
+
+
+\\version \"2.24.3\"
+
+
+\\header {
+  title = \"#{self.name}\"
+}
+
+global = {
+  \\key #{key_signature.sub(" "," \\")}
+  \\numericTimeSignature
+  \\time #{time_signature}
+  \\tempo 4=#{bpm}
+}
+
+
+
+violin = \\relative c'' {
+  \\global
+  % En avant la musique.
+  a b c d e f 
+  
+}
+
+\\score {
+  \\new Staff \\with {
+    instrumentName = \"Violon\"
+    midiInstrument = \"violin\"
+  } \\violin
+  \\layout { }
+  \\midi { }
+}
+
+
+
+
+"
+@somescore="
+
+
+
+
+\\header {
+  title = \"#{self.name}\"
+}
+
+
+
+
+  
+
+
+\\score {
+  \\new Staff \\with {
+    instrumentName = \"Violon\"
+    midiInstrument = \"violin\"
+  } 
+\\relative c'' {
+  \\key #{key_signature.sub(" "," \\")}
+  \\numericTimeSignature
+  \\time #{time_signature}
+  \\tempo 4=#{bpm}
+  % En avant la musique.
+  a b c d e f 
+}
+}
+
+
+
+
+"
+@score="
+
+<lilypond fragment staffsize=26>
+  \\key #{key_signature.sub(" "," \\")}
+  \\numericTimeSignature
+  \\time #{time_signature}
+  \\tempo 4=#{bpm}
+  c'4 d' e' f' g'2 g'
+</lilypond>
+"
+@otherscore="<lilypond fragment staffsize=26>"+@score+"</lilypond>"
+
+p @score
+
+wow="./public/uploads/"
+hi=self.name.parameterize
+p wow+hi
+
+File.write(wow+"hello"+hi+".ly", @myscore)
+
+File.write(wow+"hey"+hi+".html", @score)
+
+File.write(wow+"hi"+hi+"hi.ly", @somescore)
+###
+@hi=`(cd #{wow} && lilypond-book hi#{hi}hi.ly -f html --output hi#{hi})`
+####
+
+@hey=`(cd #{wow} && lilypond-book hey#{hi}.html -f html --output #{hi})`
+
+@hello=`(cd #{wow} && ly highlight hello#{hi}.ly > hello#{hi}.html)`
+p "(cd #{wow} && ly highlight hello#{hi}.ly > hello#{hi}.html)"
+
+end
+
+end

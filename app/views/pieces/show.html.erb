@@ -1,0 +1,23 @@
+<p style="color: green"><%= notice %></p>
+
+<p><%= @piece.name %></p>
+<h1> Add New passage to the piece</h1>
+
+
+<iframe style="width:90%;height:200px;" src="/uploads/<%=@piece.name.parameterize%>/hey<%=@piece.name.parameterize%>.html">
+</iframe>
+<iframe style="width:90%;height:200px;" src="/uploads/hi<%=@piece.name.parameterize%>/hi<%=@piece.name.parameterize%>hi.html">
+</iframe>
+<iframe style="width:90%;height:200px;" src="/uploads/hello<%=@piece.name.parameterize%>.html">
+</iframe>
+
+<br>
+
+
+
+<div>
+  <%= link_to "Edit this piece", edit_piece_path(@piece) %> |
+  <%= link_to "Back to pieces", pieces_path %>
+
+  <%= button_to "Destroy this piece", @piece, method: :delete %>
+</div>
