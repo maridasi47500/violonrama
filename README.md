@@ -1,4 +1,4 @@
-# README
+# README violonrama / violin maker :violin:
 
 ![alt text](violon1.png)
 ![alt text](violon2.png)
