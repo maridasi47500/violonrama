@@ -45,8 +45,53 @@
     <%= f.text_field :modele%>
   </div>
   <div class="field">
+<%@hey="🎻 Violin: The soul of fire is displayed on the strings
+🎸 Viola: The soul of fire is displayed on the strings
+🎼 Cello: The soul of fire is displayed on the strings
+🎻 Double Bass: The soul of fire is displayed on the strings
+🎹 Piano: The soul of fire is displayed on the keys
+🎶 Harp: The soul of fire is displayed on the chords
+🎷 Flute: The soul of fire is displayed in the breath
+🎶 Oboe: The soul of fire is displayed in the reeds
+🎷 Clarinet: The soul of fire is displayed in the reeds
+🎷 Bassoon: The soul of fire is displayed in the reeds
+🎺 Trumpet: The soul of fire is displayed in the brass
+🎺 Trombone: The soul of fire is displayed in the brass
+🎺 French Horn: The soul of fire is displayed in the brass
+🎺 Tuba: The soul of fire is displayed in the brass
+🥁 Timpani: The soul of fire is displayed on the drums
+🥁 Snare Drum: The soul of fire is displayed on the drums
+🥁 Bass Drum: The soul of fire is displayed on the drums
+🥁 Cymbals: The soul of fire is displayed on the crash
+🥁 Triangle: The soul of fire is displayed on the ring
+🥁 Xylophone: The soul of fire is displayed on the wood"%>
+  <h2>Choose your instrument</h2>
+  
+  <label for="instrument">Instrument:</label>
+  <select id="instrument" name="instrument" onchange="user_instrumentmusique.value=user_instrumentmusique.value+['<%=@hey.split("\n").join("', '")%>'].filter(x => x.toLowerCase().includes(this.value))[0];">
+    <option value="violin">Violin</option>
+    <option value="viola">Viola</option>
+    <option value="cello">Cello</option>
+    <option value="doublebass">Double Bass</option>
+    <option value="flute">Flute</option>
+    <option value="oboe">Oboe</option>
+    <option value="clarinet">Clarinet</option>
+    <option value="bassoon">Bassoon</option>
+    <option value="trumpet">Trumpet</option>
+    <option value="trombone">Trombone</option>
+    <option value="frenchhorn">French Horn</option>
+    <option value="tuba">Tuba</option>
+    <option value="piano">Piano</option>
+    <option value="harp">Harp</option>
+    <option value="timpani">Timpani</option>
+    <option value="drums">Drums</option>
+    <option value="cymbals">Cymbals</option>
+    <option value="triangle">Triangle</option>
+    <option value="xylophone">Xylophone</option>
+  </select>
+
     <%= f.label :instrumentmusique %><br />
-    <%= f.text_field :instrumentmusique%>
+    <%= f.text_area :instrumentmusique%>
   </div>
   <div class="field">
     <%= f.label :paysfabrique_id %><br />
